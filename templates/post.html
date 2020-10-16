@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load user_filters %}
+{% block title %}Профиль {{ post.author.username }} {% endblock %}
+{% block text %}<h1>Пост пользователя {{ post.author.username }}</h1>{% endblock %}
+
+{% block content %}
+<main role="main" class="container">
+    <div class="row">
+        {% include 'includes/profile_info.html' with author=post.author %}
+        <div class="col-md-9">
+            <!-- Пост -->
+            {% include 'includes/posts.html' with post=post %}
+            {% include 'includes/comments.html' %}
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
