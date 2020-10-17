@@ -130,7 +130,7 @@ class PostsTest(TestCase):
             reverse('index'),
             reverse('profile', kwargs={'username': username}),
             reverse('post', kwargs={'username': username, 'post_id': post.pk}),
-            reverse('groups', kwargs={'slug': self.new_group.slug})
+            reverse('group', kwargs={'slug': self.new_group.slug})
         ]
         self._check_posts(responses, text_new, self.new_group)
 
@@ -159,7 +159,7 @@ class PostsTest(TestCase):
         responses = [
             reverse('profile', kwargs={'username': self.user.username}),
             reverse('index'),
-            reverse('groups', kwargs={'slug': self.group.slug}),
+            reverse('group', kwargs={'slug': self.group.slug}),
             reverse('post', kwargs={'username': self.user.username, 'post_id': post.id})
         ]
         for url in responses:

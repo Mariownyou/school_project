@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Записи сообщества {{ group }}{% endblock %}
+{% load user_filters %}
+
+{% block text %}
+<div class="row">
+  <div class="col">
+    <h1>{{ group }}</h1>
+    <p>{{ group.description|linebreaksbr }}</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  {% include 'includes/menu.html' %}
+    {% for category in page %}
+    
+    
+    <a href="{% url 'category' category.slug %}"><strong class="d-block text-gray-dark">{{ category.title }}</strong></a>
+    
+    {% endfor %}
+
+    {% if page.has_other_pages %}
+      {% include "includes/paginator.html" with items=page paginator=paginator %}
+    {% endif %}
+{% endblock %}

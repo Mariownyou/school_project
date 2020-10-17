@@ -8,10 +8,10 @@
             <a class="nav-link {% if follow %}active{% endif %}" href="{% url 'follow_index' %}">Раздел 2</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {% if index %}active{% endif %}" href="{% url 'groups' 'g1' %}">Раздел 3</a>
+            <a class="nav-link {% if index %}active{% endif %}" href="{% url 'group' 'g1' %}">Раздел 3</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {% if index %}active{% endif %}" href="{% url 'groups' 'g2' %}">Раздел 4</a>
+            <a class="nav-link {% if index %}active{% endif %}" href="{% url 'group' 'g2' %}">Раздел 4</a>
         </li>
     </ul>
 </div>

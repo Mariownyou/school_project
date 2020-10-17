@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CommentForm, PostForm
-from .models import Follow, Group, Post, User
+from .models import Follow, Group, Post, User, Category
 
 
 def index(request):
@@ -35,9 +35,9 @@ def new_post(request):
     return render(request, 'new_post.html', context)
 
 
-def group_posts(request, slug):
-    group = get_object_or_404(Group, slug=slug)
-    post_list = group.posts.all()
+def category(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    post_list = category.posts.all()
     paginator = Paginator(post_list, 10)
 
     page_number = request.GET.get('page')
@@ -49,6 +49,22 @@ def group_posts(request, slug):
         'paginator': paginator
     }
     return render(request, 'group.html', context)
+
+
+def group(request, slug):
+    group = get_object_or_404(Group, slug=slug)
+    subgroup_list = group.category.all()
+    paginator = Paginator(subgroup_list, 10)
+
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+
+    context = {
+        'group': group,
+        'page': page,
+        'paginator': paginator
+    }
+    return render(request, 'category.html', context)
 
 
 def profile(request, username):

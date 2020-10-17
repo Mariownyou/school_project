@@ -13,6 +13,22 @@ class Group(models.Model):
         return self.title
 
 
+class Category(models.Model):
+    group = models.ForeignKey(
+        Group,
+        on_delete=models.SET_NULL,
+        related_name='category',
+        blank=True, null=True,
+        verbose_name='Категории',
+        help_text='Выберите Категорию, если хотите 😉'
+    )
+    slug = models.SlugField(max_length=25, unique=True, blank=False, null=False)
+    title = models.CharField(max_length=200, unique=True, help_text='Назовите категорию')
+
+    def __str__(self):
+        return self.title
+
+
 class Post(models.Model):
     text = models.TextField(
         verbose_name='Ваш пост',
@@ -27,13 +43,13 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='posts'
     )
-    group = models.ForeignKey(
-        Group,
+    category = models.ForeignKey(
+        Category,
         on_delete=models.SET_NULL,
         related_name='posts',
         blank=True, null=True,
-        verbose_name='Группа',
-        help_text='Выберите группу, если хотите 😉'
+        verbose_name='Категория',
+        help_text='Выберите категорию, если хотите 😉'
     )
     image = models.ImageField(
         upload_to='posts/',

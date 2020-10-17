@@ -11,7 +11,7 @@
             <a href="{% url 'profile' post.author %}"><strong class="d-block text-gray-dark">{{ post.author.get_full_name }}</strong></a>
             <p>/</p>
             {% if post.group %}
-            <a href="{% url 'groups' post.group.slug %}"><strong class="d-block text-gray-dark">{{ post.group }}</strong></a>
+            <a href="{% url 'group' post.group.slug %}"><strong class="d-block text-gray-dark">{{ post.group }}</strong></a>
             {% endif %}
           </div>
             <!-- Текст поста -->
@@ -22,7 +22,6 @@
                 <!-- Ссылка на страницу записи в атрибуте href-->
                 {% if user.is_authenticated %}
                 <a class="btn btn-sm text-muted" href="{% url 'add_comment' post.author.username post.pk %}" role="button">Добавить комментарий</a>
-                <a class="btn btn-sm text-muted" href="{% url 'post' post.author.username post.pk %}" role="button">Посмотреть комментарии</a>
                 {% endif %}
                 <!-- Ссылка на редактирование, показывается только автору записи -->
                 {% if request.user == post.author %}
