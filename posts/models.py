@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from ckeditor.fields import RichTextField
 
 User = get_user_model()
 
@@ -37,10 +38,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    text = models.TextField(
-        verbose_name='Ваш пост',
-        help_text='Напишите ваш замечательный пост ❤'
-    )
+    text = RichTextField()
     title = models.CharField(
         'Заголовок',
         max_length=200, unique=True,
