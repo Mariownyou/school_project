@@ -8,6 +8,8 @@ from .models import Follow, Group, Post, User, Category
 
 def index(request):
     post_list = Post.objects.select_related('author')
+    latest_exam = Post.objects.filter(category__slug="exam").first()
+    latest_reading = Post.objects.filter(category__slug="homework").first()
     paginator = Paginator(post_list, 10)
 
     page_number = request.GET.get('page')
@@ -15,7 +17,9 @@ def index(request):
 
     context = {
         'page': page,
-        'paginator': paginator
+        'paginator': paginator,
+        "latest_e": latest_exam,
+        "latest_r": latest_reading
     }
     return render(request, 'index.html', context)
 

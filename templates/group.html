@@ -13,12 +13,14 @@
 
 {% block content %}
   {% include 'includes/menu.html' %}
+  <ul class="list-group list-group-flush">
     {% for category in page %}
-    
-    
-    <a href="{% url 'category' category.slug %}"><strong class="d-block text-gray-dark">{{ category.title }}</strong></a>
-    
+    <li class="list-group-item">
+      <a href="{% url 'category' category.slug %}"><strong class="d-block text-gray-dark">{{ category.title }}</strong></a>
+    </li>
     {% endfor %}
+  </ul>
+    
 
     {% if page.has_other_pages %}
       {% include "includes/paginator.html" with items=page paginator=paginator %}
