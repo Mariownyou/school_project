@@ -10,10 +10,11 @@
             <!-- Ссылка на страницу автора в атрибуте href; username автора в тексте ссылки -->
             <a href="{% url 'profile' post.author %}"><strong class="d-block text-gray-dark">{{ post.author.get_full_name }}</strong></a>
             <p>/</p>
-            {% if post.group %}
-            <a href="{% url 'group' post.group.slug %}"><strong class="d-block text-gray-dark">{{ post.group }}</strong></a>
+            {% if post.category %}
+            <a href="{% url 'category' post.category.slug %}"><strong class="d-block text-gray-dark">{{ post.category }}</strong></a>
             {% endif %}
           </div>
+            <h5 class="card-title">{{ post.title }}</h5>
             <!-- Текст поста -->
             <p>{{ post.text|linebreaksbr }}</p>
         </p>

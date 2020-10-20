@@ -16,14 +16,21 @@ class Group(models.Model):
 class Category(models.Model):
     group = models.ForeignKey(
         Group,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name='category',
-        blank=True, null=True,
         verbose_name='Категории',
-        help_text='Выберите Категорию, если хотите 😉'
+        help_text='Выберите Группу'
     )
-    slug = models.SlugField(max_length=25, unique=True, blank=False, null=False)
-    title = models.CharField(max_length=200, unique=True, help_text='Назовите категорию')
+    slug = models.SlugField(
+        max_length=25, unique=True, blank=False, null=False,
+        verbose_name='уникальное имя',
+        help_text='Уникальное название связанное с заголовком. Используйте латинские буквы. Пробелы заменяйте "-"'
+    )
+    title = models.CharField(
+        max_length=200, unique=True,
+        verbose_name='Заголовок',
+        help_text='Назовите категорию'
+    )
 
     def __str__(self):
         return self.title
@@ -33,6 +40,10 @@ class Post(models.Model):
     text = models.TextField(
         verbose_name='Ваш пост',
         help_text='Напишите ваш замечательный пост ❤'
+    )
+    title = models.CharField(
+        'Заголовок',
+        max_length=200, unique=True,
     )
     pub_date = models.DateTimeField(
         'date published',
@@ -50,6 +61,11 @@ class Post(models.Model):
         blank=True, null=True,
         verbose_name='Категория',
         help_text='Выберите категорию, если хотите 😉'
+    )
+    is_important = models.BooleanField(
+        'Новость?',
+        default=False,
+        help_text='Поставте галочку если хотите отметить это важным',
     )
     image = models.ImageField(
         upload_to='posts/',

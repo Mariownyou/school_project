@@ -20,6 +20,20 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+def news(request):
+    post_list = Post.objects.filter(is_important=True)
+    paginator = Paginator(post_list, 10)
+
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+
+    context = {
+        'page': page,
+        'paginator': paginator
+    }
+    return render(request, 'news.html', context)
+
+
 @login_required
 def new_post(request):
     form = PostForm(request.POST or None, files=request.FILES or None)

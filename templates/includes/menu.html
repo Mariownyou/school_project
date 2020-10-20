@@ -2,10 +2,10 @@
 <div class="row">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link {% if index %}active{% endif %}" href="{% url 'index' %}">Раздел 1</a>
+            <a class="nav-link {% if index %}active{% endif %}" href="{% url 'index' %}">Главная</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {% if follow %}active{% endif %}" href="{% url 'follow_index' %}">Раздел 2</a>
+            <a class="nav-link {% if follow %}active{% endif %}" href="{% url 'news' %}">Новости</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {% if index %}active{% endif %}" href="{% url 'group' 'g1' %}">Раздел 3</a>
