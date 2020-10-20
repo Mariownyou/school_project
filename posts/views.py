@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, CategoryForm
 from .models import Follow, Group, Post, User, Category
 
 
@@ -35,6 +35,19 @@ def new_post(request):
     return render(request, 'new_post.html', context)
 
 
+@login_required
+def new_category(request):
+    form = CategoryForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('index', permanent=True)
+    
+    context = {
+        'form': form,
+    }
+    return render(request, 'new_category.html', context)
+
+
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     post_list = category.posts.all()
@@ -44,11 +57,11 @@ def category(request, slug):
     page = paginator.get_page(page_number)
 
     context = {
-        'group': group,
+        'group': category,
         'page': page,
         'paginator': paginator
     }
-    return render(request, 'group.html', context)
+    return render(request, 'category.html', context)
 
 
 def group(request, slug):
@@ -64,7 +77,7 @@ def group(request, slug):
         'page': page,
         'paginator': paginator
     }
-    return render(request, 'category.html', context)
+    return render(request, 'group.html', context)
 
 
 def profile(request, username):

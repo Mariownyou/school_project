@@ -12,11 +12,10 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'includes/menu.html' %}
-    {% for category in page %}
+   
+    {% for post in page %}
     
-    
-    <a href="{% url 'category' category.slug %}"><strong class="d-block text-gray-dark">{{ category.title }}</strong></a>
+    {% include 'includes/posts.html' %}
     
     {% endfor %}
 
