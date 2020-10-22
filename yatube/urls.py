@@ -21,6 +21,7 @@ urlpatterns = [
 urlpatterns += [
     path('about-author/', views.flatpage, {'url': '/about-author/'}, name='about'),
     path('about-spec/', views.flatpage, {'url': '/about-spec/'}, name='terms'),
+    path('about-school/', views.flatpage, {'url': '/about-school/'}, name='school'),
     path('rimma-yakovlevlna/', views.flatpage, {'url': '/rimma-yakovlevlna/'}, name='rimma'),
 ]
 

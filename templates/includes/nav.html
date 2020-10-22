@@ -30,17 +30,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav w-100 justify-content-between">
-      <li class="nav-item active">
-        <a class="nav-link" href='{% url 'index' %}'>Main<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href='{% url 'index' %}'>Main</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href='{% url 'news' %}'>News</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href='{% url 'group' "g1" %}'>For Students</a>
+        <a class="nav-link" href='{% url 'group' "students" %}'>For Students</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href='{% url 'group' "g2" %}'>For Parents</a>
+        <a class="nav-link" href='{% url 'group' "parents" %}'>For Parents</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href='{% url 'contact_teacher' %}'>Ask Us</a>
@@ -51,7 +51,7 @@
       {% if user.is_authenticated %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Advanced options
+          Advanced Options
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href='{% url 'profile' user.username %}'>Profile</a>

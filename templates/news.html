@@ -3,7 +3,6 @@
 {% block text %}<h1>Новости</h1>{% endblock %}
 
 {% block content %}
-    {% include 'includes/menu.html' %}
     {% load cache %} 
     {% cache 20 news_page %}  
       {% for post in page %}

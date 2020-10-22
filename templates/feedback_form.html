@@ -38,10 +38,7 @@
                 </form>
             </div> <!-- card body -->
         </div> <!-- card -->
-        {% for feedback in feedbacks %}
-        <p>{{ feedback.name }}</p>
-        <p>{{ feedback.feedback }}</p>
-        {% endfor %}
+        {% include 'includes/feedback.html' with items=feedbacks %}
     </div> <!-- col -->
 </div> <!-- row -->
 
