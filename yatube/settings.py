@@ -1,4 +1,6 @@
 import os
+from .utils import generate_uuid4_filename
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,9 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sorl.thumbnail',
-    'ckeditor',
+    'trumbowyg',
     'ckeditor_uploader',
     'posts',
+    'forms'
 ]
 
 MIDDLEWARE = [
@@ -96,16 +99,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_CONFIGS = {
-    'default': {
-        
-        'height': '100%',
-        'width': '100%',
-        'toolbarCanCollapse': False,
-    },
-}
+TRUMBOWYG_THUMBNAIL_SIZE = (100, 100)
+TRUMBOWYG_TRANSLITERATE_FILENAME = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

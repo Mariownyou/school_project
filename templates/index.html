@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Последние обновления на сайте{% endblock %}
 {% block text %}
-<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-  <div class="col-md-6 px-0">
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-info">
+  <div class="col-md-6 px-0" id='flag'>
     <h1 class="display-4 font-italic">Наша очень крутая школа бла бла бла</h1>
     <p class="lead my-3">Немного информации о школеееее</p>
     <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Продолжить читать...</a></p>
@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-md-8 blog-main">
           <h3 class="pb-4 mb-4 font-italic border-bottom">
-            Последние посты
+            Latests posts
           </h3>
           {% load cache %} 
           {% cache 20 index_page %}  

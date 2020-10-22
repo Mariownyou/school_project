@@ -10,9 +10,9 @@ urlpatterns = [
     path('group/<slug:slug>/', views.group, name='group'),
     path('category/<slug:slug>/', views.category, name='category'),
     path("follow/", views.follow_index, name="follow_index"),
-    path("<str:username>/follow/", views.profile_follow, name="profile_follow"),
-    path("<str:username>/unfollow/", views.profile_unfollow, name="profile_unfollow"),
-    path('<str:username>/', views.profile, name='profile'),
+    path("user/<str:username>/follow/", views.profile_follow, name="profile_follow"),
+    path("user/<str:username>/unfollow/", views.profile_unfollow, name="profile_unfollow"),
+    path('user/<str:username>/', views.profile, name='profile'),
     path('<str:username>/<int:post_id>/', views.post_view, name='post'),
     path(
         '<str:username>/<int:post_id>/edit/',

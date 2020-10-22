@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from ckeditor.fields import RichTextField
+
 
 User = get_user_model()
 
@@ -38,7 +38,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    text = RichTextField()
+    text = models.TextField()
     title = models.CharField(
         'Заголовок',
         max_length=200, unique=True,
@@ -66,10 +66,16 @@ class Post(models.Model):
         help_text='Поставте галочку если хотите отметить это важным',
     )
     image = models.ImageField(
-        upload_to='posts/',
+        upload_to='posts/img',
         blank=True, null=True,
         verbose_name='Картинка',
         help_text='Картинка украсит ваш пост'
+    )
+    video = models.FileField(
+        upload_to='posts/video',
+        blank=True, null=True,
+        verbose_name='Видео',
+        help_text='Добавтье видео'
     )
 
     class Meta:

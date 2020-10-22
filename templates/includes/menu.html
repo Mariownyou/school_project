@@ -1,8 +1,10 @@
 <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href='{% url 'index' %}'>Главная</a>
-      <a class="p-2 text-muted" href='{% url 'news' %}'>Новости</a>
-      <a class="p-2 text-muted" href='{% url 'group' "g1" %}'>Грамматика</a>
-      <a class="p-2 text-muted" href='{% url 'group' "g2" %}'>Чтение</a>
-    </nav>
+  <nav class="nav d-flex justify-content-between">
+    <a class="p-2 text-muted" href='{% url 'index' %}'>Main</a>
+    <a class="p-2 text-muted" href='{% url 'news' %}'>News</a>
+    <a class="p-2 text-muted" href='{% url 'group' "g1" %}'>For Students</a>
+    <a class="p-2 text-muted" href='{% url 'group' "g2" %}'>For Parents</a>
+    <a class="p-2 text-muted" href='{% url 'contact_teacher' %}'>Ask Us</a>
+    <a class="p-2 text-muted" href='{% url 'feedback' %}'>Any Wishes?</a>
+  </nav>
 </div>

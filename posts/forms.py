@@ -1,5 +1,6 @@
 from django import forms
-from ckeditor.widgets import CKEditorWidget
+from trumbowyg.widgets import TrumbowygWidget
+
 
 from .models import Comment, Post, Category
 
@@ -7,7 +8,10 @@ from .models import Comment, Post, Category
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('category', 'title', 'text', 'is_important', 'image')
+        fields = ('category', 'title', 'text', 'is_important', 'image', 'video')
+        widgets = {
+            'text': TrumbowygWidget(),
+        }
 
 
 class CategoryForm(forms.ModelForm):
