@@ -24,4 +24,21 @@
         </main>
         {% include 'includes/footer.html' %}
     </body>
+    <script>  
+        var postList = document.querySelectorAll(".post-text")
+        function pClasses() {
+            for (post of postList) {
+                var pList = post.querySelectorAll("p")
+                var imgList = post.querySelectorAll("img")
+                // console.log(pList, imgList) 
+                for (p of pList) {
+                    p.classList.add("h1")
+                }
+                for (img of imgList) {
+                    img.classList.add("img-thumbnail")
+                }
+            }
+        }
+        pClasses()
+    </script>
 </html>

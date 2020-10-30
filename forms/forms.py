@@ -9,7 +9,8 @@ class FeedbackForm(forms.ModelForm):
         fields = ('name', 'email', 'feedback')
 
 
-class ContactTeacherForm(forms.ModelForm):
-    class Meta:
-        model = ContactTeacher
-        fields = ('teacher', 'name', 'email', 'question')
+class ContactTeacherForm(forms.Form):
+    teacher = forms.ModelChoiceField(Teacher.objects.all())
+    name = forms.CharField()
+    email = forms.EmailField()
+    question = forms.CharField(widget=forms.Textarea)

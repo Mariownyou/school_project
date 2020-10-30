@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 from .forms import ContactTeacherForm, FeedbackForm
 from .models import ContactTeacher, Feedback, Teacher
@@ -29,11 +29,12 @@ def contact_teacher(request):
         teacher = form.cleaned_data.get("teacher")
         question = form.cleaned_data.get("question")
         teacher_email = Teacher.objects.get(name=teacher)
-        send_mail(
-            question, email,
+        msg = EmailMessage(
             email,
-            [teacher_email]
+            question,
+            to=[teacher_email.email, 'smj610black@gmail.com']
         )
+        msg.send()
         return redirect('index', permanent=True)
 
     context = {

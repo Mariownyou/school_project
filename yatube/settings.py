@@ -111,15 +111,17 @@ LOGIN_REDIRECT_URL = 'index'
 
 LOGOUT_REDIRECT_URL = 'index'
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'smj610black@gmail.com'
-EMAIL_HOST_PASSWORD = 'Mariownyou99'
+DEFAULT_FROM_EMAIL = 'smj510black@gmail.com'
+SERVER_EMAIL = 'smj510black@gmail.com'
+EMAIL_HOST_USER = 'smj510black@gmail.com'
+EMAIL_HOST_PASSWORD = 'qmkoczzpzccvqdzt'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = True
 
 SITE_ID = 1
 
